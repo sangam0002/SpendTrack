@@ -1,0 +1,730 @@
+/* ==========================================
+   BASIC
+========================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+
+/* ==========================================
+   MAIN CONTAINER
+========================================== */
+
+.container {
+    width: 92%;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+
+/* ==========================================
+   LOGIN / REGISTER
+========================================== */
+
+.auth-container {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.auth-box {
+    width: 100%;
+    max-width: 430px;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.auth-box h1 {
+    text-align: center;
+
+    margin: 0 0 5px;
+
+    font-size: 30px;
+}
+
+.subtitle {
+    text-align: center;
+
+    color: #777;
+
+    margin-bottom: 28px;
+}
+
+.auth-box h2 {
+    margin-bottom: 20px;
+}
+
+
+/* ==========================================
+   FORMS
+========================================== */
+
+label {
+    display: block;
+
+    margin-top: 16px;
+    margin-bottom: 7px;
+
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #d5d9df;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    outline: none;
+
+    background: white;
+}
+
+input:focus,
+select:focus {
+    border-color: #222;
+
+    box-shadow:
+        0 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+button,
+.button {
+    display: block;
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 20px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #222;
+
+    color: white;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+button:hover,
+.button:hover {
+    background: #444;
+
+    transform: translateY(-1px);
+}
+
+.secondary {
+    background: #666;
+}
+
+.secondary:hover {
+    background: #444;
+}
+
+
+/* ==========================================
+   ACCOUNT TEXT
+========================================== */
+
+.account-text {
+    text-align: center;
+
+    margin-top: 22px;
+
+    color: #666;
+}
+
+.account-text a {
+    color: #222;
+
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
+.account-text a:hover {
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+   DASHBOARD TOP BAR
+========================================== */
+
+.top-bar {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.top-bar h1 {
+    margin: 0 0 6px;
+
+    font-size: 30px;
+}
+
+.top-bar p {
+    margin: 0;
+
+    color: #777;
+
+    font-size: 15px;
+}
+
+.logout {
+    text-decoration: none;
+
+    color: #d00000;
+
+    font-weight: bold;
+
+    padding: 8px 12px;
+
+    border-radius: 8px;
+}
+
+.logout:hover {
+    background: #ffecec;
+}
+
+
+/* ==========================================
+   DASHBOARD STATISTICS
+========================================== */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 16px;
+
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.05);
+
+    transition: 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 20px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card p {
+    margin: 0;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+.stat-card h2 {
+    margin: 10px 0 0;
+
+    font-size: 25px;
+}
+
+
+/* ==========================================
+   PAGE HEADER
+========================================== */
+
+.page-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.page-header h1 {
+    margin: 0;
+
+    font-size: 28px;
+}
+
+.page-header a {
+    color: #222;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   FORM BOX
+========================================== */
+
+.form-box {
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 4px 18px rgba(0, 0, 0, 0.05);
+}
+
+
+/* ==========================================
+   SEARCH / FILTER
+========================================== */
+
+.filter-box {
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 16px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.filter-box form {
+    display: flex;
+
+    gap: 10px;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+.filter-box input,
+.filter-box select {
+    flex: 1;
+
+    min-width: 150px;
+}
+
+.filter-box button {
+    width: auto;
+
+    margin-top: 0;
+
+    padding: 13px 20px;
+}
+
+.reset-button {
+    padding: 13px 20px;
+
+    background: #eeeeee;
+
+    color: #222;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+.reset-button:hover {
+    background: #dddddd;
+}
+
+
+/* ==========================================
+   EXPENSE CARDS
+========================================== */
+
+.expense-card {
+    background: white;
+
+    padding: 20px;
+
+    margin: 12px 0;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.04);
+
+    transition: 0.2s;
+}
+
+.expense-card:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.07);
+}
+
+.expense-card h3 {
+    margin: 0 0 7px;
+
+    font-size: 18px;
+}
+
+.expense-card p {
+    margin: 5px 0;
+
+    color: #666;
+}
+
+.expense-card small {
+    color: #888;
+}
+
+.expense-right {
+    text-align: right;
+
+    min-width: 110px;
+}
+
+.expense-right strong {
+    font-size: 18px;
+}
+
+.delete {
+    color: #d00000;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+.delete:hover {
+    text-decoration: underline;
+}
+
+.edit {
+    color: #333;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+.edit:hover {
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+   CATEGORY SUMMARY
+========================================== */
+
+.section-title {
+    margin-top: 30px;
+
+    margin-bottom: 15px;
+
+    font-size: 21px;
+}
+
+.category-card {
+    background: white;
+
+    padding: 18px;
+
+    margin: 10px 0;
+
+    border-radius: 13px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+
+/* ==========================================
+   CHART
+========================================== */
+
+.chart-box {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    margin-bottom: 25px;
+
+    box-shadow:
+        0 4px 18px rgba(0, 0, 0, 0.05);
+
+    text-align: center;
+}
+
+.chart-box canvas {
+    max-width: 450px;
+
+    max-height: 450px;
+
+    margin: auto;
+}
+
+
+/* ==========================================
+   VIEW MORE
+========================================== */
+
+.view-more {
+    display: block;
+
+    text-align: center;
+
+    margin: 20px 0;
+
+    color: #222;
+
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
+.view-more:hover {
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+   EMPTY MESSAGE
+========================================== */
+
+.empty {
+    background: white;
+
+    padding: 30px;
+
+    text-align: center;
+
+    border-radius: 15px;
+
+    margin-top: 20px;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+.empty h3 {
+    margin-top: 0;
+}
+
+.empty p {
+    color: #777;
+}
+
+
+/* ==========================================
+   MOBILE RESPONSIVE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .container {
+        width: 94%;
+
+        margin: 18px auto;
+    }
+
+
+    .auth-box {
+        padding: 25px;
+    }
+
+
+    .top-bar {
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+
+    .top-bar h1 {
+        font-size: 25px;
+    }
+
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .stat-card h2 {
+        font-size: 23px;
+    }
+
+
+    .expense-card {
+        align-items: flex-start;
+
+        padding: 17px;
+    }
+
+
+    .expense-right {
+        min-width: 90px;
+    }
+
+
+    .page-header {
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+
+    .page-header h1 {
+        font-size: 24px;
+    }
+
+
+    .form-box {
+        padding: 22px;
+    }
+
+
+    .filter-box form {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .filter-box input,
+    .filter-box select {
+        width: 100%;
+
+        min-width: 0;
+    }
+
+
+    .filter-box button {
+        width: 100%;
+    }
+
+
+    .reset-button {
+        text-align: center;
+    }
+
+
+    .category-card {
+        padding: 16px;
+    }
+
+
+    .chart-box {
+        padding: 15px;
+    }
+
+}
+
+
+/* ==========================================
+   SMALL PHONE
+========================================== */
+
+@media (max-width: 450px) {
+
+    .top-bar {
+        flex-direction: column;
+    }
+
+
+    .logout {
+        align-self: flex-end;
+    }
+
+
+    .expense-card {
+        flex-direction: column;
+    }
+
+
+    .expense-right {
+        width: 100%;
+
+        text-align: left;
+    }
+
+
+    .section-title {
+        font-size: 19px;
+    }
+
+}

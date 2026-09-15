@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>SpendTrack - Dashboard</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- TOP BAR -->
+
+    <div class="top-bar">
+
+        <div>
+
+            <h1>💰 SpendTrack</h1>
+
+            <p>
+                Welcome, {{ name }} 👋
+            </p>
+
+        </div>
+
+
+        <a href="/logout" class="logout">
+            Logout
+        </a>
+
+    </div>
+
+
+
+    <!-- DASHBOARD STATISTICS -->
+
+    <div class="stats-grid">
+
+
+        <!-- Total Expenses -->
+
+        <div class="stat-card">
+
+            <p>
+                💰 Total Expenses
+            </p>
+
+            <h2>
+                ₹ {{ "%.2f"|format(total) }}
+            </h2>
+
+        </div>
+
+
+
+        <!-- This Month -->
+
+        <div class="stat-card">
+
+            <p>
+                📅 This Month
+            </p>
+
+            <h2>
+                ₹ {{ "%.2f"|format(monthly_total) }}
+            </h2>
+
+        </div>
+
+
+
+        <!-- Total Transactions -->
+
+        <div class="stat-card">
+
+            <p>
+                🧾 Total Transactions
+            </p>
+
+            <h2>
+                {{ expense_count }}
+            </h2>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ACTION BUTTONS -->
+
+    <a href="/add-expense" class="button">
+        + Add Expense
+    </a>
+
+
+    <a href="/expenses" class="button secondary">
+        📋 View All Expenses
+    </a>
+
+
+
+    <!-- CATEGORY SUMMARY -->
+
+    <h2 class="section-title">
+        🏷️ Spending by Category
+    </h2>
+
+
+    {% if category_data %}
+
+
+        {% for category in category_data %}
+
+        <div class="category-card">
+
+
+            <div>
+
+                <strong>
+                    {{ category["category"] }}
+                </strong>
+
+            </div>
+
+
+            <strong>
+
+                ₹ {{ "%.2f"|format(category["total"]) }}
+
+            </strong>
+
+
+        </div>
+
+        {% endfor %}
+
+
+    {% else %}
+
+
+        <div class="empty">
+
+            <h3>
+                No category data
+            </h3>
+
+            <p>
+                Add expenses to see your spending summary.
+            </p>
+
+        </div>
+
+
+    {% endif %}
+
+
+
+    <!-- EXPENSE CHART -->
+
+    <h2 class="section-title">
+        📊 Expense Chart
+    </h2>
+
+
+    {% if category_data %}
+
+
+    <div class="chart-box">
+
+        <canvas id="expenseChart"></canvas>
+
+    </div>
+
+
+    <!-- Chart Data -->
+
+    <script id="chart-data" type="application/json">
+
+    {
+        "categories": {{ category_names | tojson }},
+        "amounts": {{ category_amounts | tojson }}
+    }
+
+    </script>
+
+
+    <!-- Our Chart JavaScript -->
+
+    <script src="{{ url_for('static', filename='chart.js') }}"></script>
+
+
+    {% endif %}
+
+
+
+    <!-- RECENT EXPENSES -->
+
+    <h2 class="section-title">
+        🧾 Recent Expenses
+    </h2>
+
+
+    {% if expenses %}
+
+
+        {% for expense in expenses[:5] %}
+
+
+        <div class="expense-card">
+
+
+            <!-- Expense Information -->
+
+            <div>
+
+                <h3>
+                    {{ expense["title"] }}
+                </h3>
+
+
+                <p>
+                    {{ expense["category"] }}
+                </p>
+
+
+                <small>
+                    {{ expense["date"] }}
+                </small>
+
+            </div>
+
+
+
+            <!-- Amount -->
+
+            <strong>
+
+                ₹ {{ "%.2f"|format(expense["amount"]) }}
+
+            </strong>
+
+
+        </div>
+
+
+        {% endfor %}
+
+
+
+        {% if expenses|length > 5 %}
+
+
+        <a href="/expenses" class="view-more">
+
+            View all expenses →
+
+        </a>
+
+
+        {% endif %}
+
+
+
+    {% else %}
+
+
+        <div class="empty">
+
+            <h3>
+                No expenses yet
+            </h3>
+
+            <p>
+                Add your first expense to start tracking.
+            </p>
+
+
+            <a href="/add-expense" class="button">
+
+                + Add Expense
+
+            </a>
+
+        </div>
+
+
+    {% endif %}
+
+
+
+</div>
+
+
+</body>
+
+</html>

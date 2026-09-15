@@ -1,0 +1,240 @@
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>SpendTrack - My Expenses</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+
+    <!-- Page Header -->
+
+    <div class="page-header">
+
+        <h1>📋 My Expenses</h1>
+
+        <a href="/dashboard">
+            ← Dashboard
+        </a>
+
+    </div>
+
+
+    <!-- Search and Filters -->
+
+    <div class="filter-box">
+
+        <form action="/expenses" method="GET">
+
+
+            <!-- Search -->
+
+            <input
+                type="text"
+                name="search"
+                placeholder="🔍 Search expense..."
+                value="{{ search }}"
+            >
+
+
+            <!-- Category -->
+
+            <select name="category">
+
+                <option value="">
+                    All Categories
+                </option>
+
+                <option value="Food"
+                    {% if category == "Food" %}selected{% endif %}>
+                    🍔 Food
+                </option>
+
+                <option value="Travel"
+                    {% if category == "Travel" %}selected{% endif %}>
+                    🚗 Travel
+                </option>
+
+                <option value="Shopping"
+                    {% if category == "Shopping" %}selected{% endif %}>
+                    🛍️ Shopping
+                </option>
+
+                <option value="Bills"
+                    {% if category == "Bills" %}selected{% endif %}>
+                    💡 Bills
+                </option>
+
+                <option value="Education"
+                    {% if category == "Education" %}selected{% endif %}>
+                    📚 Education
+                </option>
+
+                <option value="Entertainment"
+                    {% if category == "Entertainment" %}selected{% endif %}>
+                    🎬 Entertainment
+                </option>
+
+                <option value="Health"
+                    {% if category == "Health" %}selected{% endif %}>
+                    🏥 Health
+                </option>
+
+                <option value="Other"
+                    {% if category == "Other" %}selected{% endif %}>
+                    📦 Other
+                </option>
+
+            </select>
+
+
+            <!-- Month -->
+
+            <input
+                type="month"
+                name="month"
+                value="{{ month }}"
+            >
+
+
+            <!-- Search Button -->
+
+            <button type="submit">
+                🔎 Search
+            </button>
+
+
+            <!-- Reset -->
+
+            <a href="/expenses" class="reset-button">
+                🔄 Reset
+            </a>
+
+        </form>
+
+    </div>
+
+
+    <!-- Expense List -->
+
+    {% if expenses %}
+
+        {% for expense in expenses %}
+
+
+        <div class="expense-card">
+
+
+            <!-- Expense Information -->
+
+            <div>
+
+                <h3>
+                    {{ expense["title"] }}
+                </h3>
+
+
+                <p>
+                    Category: {{ expense["category"] }}
+                </p>
+
+
+                <small>
+                    Date: {{ expense["date"] }}
+                </small>
+
+            </div>
+
+
+            <!-- Amount + Actions -->
+
+            <div class="expense-right">
+
+
+                <strong>
+                    ₹ {{ "%.2f"|format(expense["amount"]) }}
+                </strong>
+
+
+                <br><br>
+
+
+                <!-- Edit -->
+
+                <a
+                    href="/edit/{{ expense['id'] }}"
+                    class="edit"
+                >
+                    ✏️ Edit
+                </a>
+
+
+                <br><br>
+
+
+                <!-- Delete -->
+
+                <a
+                    href="/delete/{{ expense['id'] }}"
+                    class="delete"
+                    onclick="return confirm('Are you sure you want to delete this expense?')"
+                >
+                    🗑️ Delete
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        {% endfor %}
+
+
+    {% else %}
+
+
+        <!-- No Expenses -->
+
+        <div class="empty">
+
+            <h3>
+                No expenses found
+            </h3>
+
+            <p>
+                No expenses match your search or filters.
+            </p>
+
+
+            <a
+                href="/add-expense"
+                class="button"
+            >
+                + Add Expense
+            </a>
+
+        </div>
+
+
+    {% endif %}
+
+
+</div>
+
+</body>
+
+</html>
+```

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>SpendTrack - Edit Expense</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="page-header">
+
+        <h1>✏️ Edit Expense</h1>
+
+        <a href="/expenses">
+            ← My Expenses
+        </a>
+
+    </div>
+
+
+    <div class="form-box">
+
+        <form action="/edit/{{ expense['id'] }}" method="POST">
+
+            <label>Expense Name</label>
+
+            <input
+                type="text"
+                name="title"
+                value="{{ expense['title'] }}"
+                required
+            >
+
+
+            <label>Amount (₹)</label>
+
+            <input
+                type="number"
+                name="amount"
+                value="{{ expense['amount'] }}"
+                step="0.01"
+                min="0"
+                required
+            >
+
+
+            <label>Category</label>
+
+            <select name="category" required>
+
+                <option value="Food"
+                    {% if expense['category'] == 'Food' %}selected{% endif %}>
+                    🍔 Food
+                </option>
+
+                <option value="Travel"
+                    {% if expense['category'] == 'Travel' %}selected{% endif %}>
+                    🚗 Travel
+                </option>
+
+                <option value="Shopping"
+                    {% if expense['category'] == 'Shopping' %}selected{% endif %}>
+                    🛍️ Shopping
+                </option>
+
+                <option value="Bills"
+                    {% if expense['category'] == 'Bills' %}selected{% endif %}>
+                    💡 Bills
+                </option>
+
+                <option value="Education"
+                    {% if expense['category'] == 'Education' %}selected{% endif %}>
+                    📚 Education
+                </option>
+
+                <option value="Entertainment"
+                    {% if expense['category'] == 'Entertainment' %}selected{% endif %}>
+                    🎬 Entertainment
+                </option>
+
+                <option value="Health"
+                    {% if expense['category'] == 'Health' %}selected{% endif %}>
+                    🏥 Health
+                </option>
+
+                <option value="Other"
+                    {% if expense['category'] == 'Other' %}selected{% endif %}>
+                    📦 Other
+                </option>
+
+            </select>
+
+
+            <label>Date</label>
+
+            <input
+                type="date"
+                name="date"
+                value="{{ expense['date'] }}"
+                required
+            >
+
+
+            <button type="submit">
+                💾 Save Changes
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
